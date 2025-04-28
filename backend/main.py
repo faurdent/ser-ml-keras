@@ -22,6 +22,6 @@ app.add_middleware(
 
 
 @app.post("/emotion-recognition")
-async def file(request: Request, file: Annotated[UploadFile, Form()]):
+async def file(file: Annotated[UploadFile, Form()]):
     emotion, probability = ser_classifier.predict_emotion(file.file)
     return {"label": emotion, "probability": probability}
